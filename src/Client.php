@@ -23,7 +23,9 @@ class Client
         $this->_security = $security;
     }
     
-    public function get(QueryAbstract $query, array $parameters) {
+    public function get(QueryAbstract $query) {
+        $parameters = $query->parameters;
+        
         // Merge Parameters with the auth.
         $parameters['auth'] = $query->authSecurityString($this->_security, $this->_auth_key);
         
@@ -36,6 +38,7 @@ class Client
             throw $e;
         }
         
+        // We need to check to see if the content type is text/xml, but for right now this will work fine.
         if($response->getStatusCode() == '200') {
             $xml = $response->getBody()->getContents();
             
