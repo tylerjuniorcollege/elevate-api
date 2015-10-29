@@ -27,6 +27,6 @@ class Client
             $parameters['auth'] = $this->_auth_key;
         }
         
-        $result = $this->_client->request('GET', $endpoint, $parameters);
+        return $this->_client->request('GET', $endpoint, $parameters);
     }
 }
