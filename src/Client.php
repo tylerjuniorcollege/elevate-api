@@ -39,7 +39,7 @@ class Client
         if($response->getStatusCode() == '200') {
             $xml = $response->getBody()->getContents();
             
-            return new SimpleXMLElement($xml);
+            return new \SimpleXMLElement($xml);
         }
     }
 }
