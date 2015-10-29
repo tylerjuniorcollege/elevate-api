@@ -26,4 +26,10 @@ abstract class QueryAbstract {
                 break;
         }
     }
+    
+    public function setParam($name, $value) {
+        if(isset($this->parameters[$name])) {
+            $this->parameters[$name] = $value;
+        }
+    }
 }
