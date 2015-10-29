@@ -23,7 +23,7 @@ class Client
     
     public function get($endpoint, array $parameters) {
         // Merge Parameters with the auth.
-        if(!$security) {
+        if(!$this->_security) {
             $parameters['auth'] = $this->_auth_key;
         }
         
