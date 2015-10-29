@@ -7,9 +7,11 @@ abstract class QueryAbstract {
     public $query;
     public $parameters = array();
     
-    abstract function getSecurityString($auth_key);
+    public function getSecurityString($auth_key) {
+        return implode(':', $this->parameters) . ":" . $auth_key;
+    }
     
-    function authSecurityString($type, $auth_key) {
+    public function authSecurityString($type, $auth_key) {
         switch(strtolower($type)) {
             case 'md5':
                 return md5($this->getSecurityString($auth_key));
