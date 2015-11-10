@@ -17,6 +17,7 @@ class Client
     // Constructor for the client class.
     public function __construct($base_url, $auth_key, $security = 'key') {
         $this->_client = new GuzzleClient(['base_uri' => $base_url]);
+        $this->_client->setDefaultOption('verify', false);
         
         $this->_auth_key = $auth_key;
         
