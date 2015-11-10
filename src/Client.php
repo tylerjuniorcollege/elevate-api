@@ -17,7 +17,7 @@ class Client
     // Constructor for the client class.
     public function __construct($base_url, $auth_key, $security = 'key') {
         $this->_client = new GuzzleClient(['base_uri' => $base_url]);
-        $this->_client->setDefaultOption('verify', false);
+        //$this->_client->setDefaultOption('verify', false);
         
         $this->_auth_key = $auth_key;
         
@@ -34,7 +34,7 @@ class Client
         $endpoint = 'solar.qll_web.' . $query->query;
         
         try {
-            $response = $this->_client->request('GET', $endpoint, ['query' => $parameters]);
+            $response = $this->_client->request('GET', $endpoint, ['query' => $parameters, 'verify' => false]);
         } catch(GuzzleException $e) {
             throw $e;
         }
